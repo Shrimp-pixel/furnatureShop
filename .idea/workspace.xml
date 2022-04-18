@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40eaa6ed-cb4c-463a-8b0b-95795fbfba0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/basket.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/basketapp/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/product.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products_list.html" afterDir="false" />
+    <list default="true" id="40eaa6ed-cb4c-463a-8b0b-95795fbfba0f" name="Changes" comment="Basket: add and delete">
+      <change afterPath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/includes/inc_baskets_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/mainapp/js/basket.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/templates/authapp/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/templates/authapp/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/templates/authapp/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/templates/authapp/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/authapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/basket.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/basket.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/basketapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/basketapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/basketapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/basketapp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_categories_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_categories_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_main_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_main_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,15 +40,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/mainapp/templates/mainapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/static/mainapp/js" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Django and more\furnatureShop\mysite\static\mainapp\js" />
       <recent name="D:\Django and more\furnatureShop\mysite\mainapp\templates\mainapp" />
       <recent name="D:\Django and more\furnatureShop\mysite\basketapp\templates\basketapp" />
       <recent name="D:\Django and more\furnatureShop\mysite\authapp\templates\authapp" />
       <recent name="D:\Django and more\furnatureShop\mysite\media\products" />
-      <recent name="D:\Django and more\furnatureShop\mysite" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Django and more\furnatureShop\mysite\static\mainapp\css" />
@@ -76,6 +66,14 @@
       <option name="presentableId" value="Default" />
       <updated>1650019625064</updated>
     </task>
+    <task id="LOCAL-00001" summary="Basket: add and delete">
+      <created>1650293861677</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1650293861677</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,5 +86,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Basket: add and delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basket: add and delete" />
   </component>
 </project>
