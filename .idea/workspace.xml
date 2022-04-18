@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40eaa6ed-cb4c-463a-8b0b-95795fbfba0f" name="Changes" comment="" />
+    <list default="true" id="40eaa6ed-cb4c-463a-8b0b-95795fbfba0f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/basketapp/templates/basketapp/basket.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/basketapp/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/authapp/templates/authapp/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/templates/authapp/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/authapp/templates/authapp/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/templates/authapp/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_categories_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_categories_menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_main_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_main_menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mainapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +36,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="27pakaSdCtCDmVeKEPAOs0jh2Zf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -24,15 +49,19 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/authapp/templates/authapp" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/mainapp/templates/mainapp" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Django and more\furnatureShop\mysite\mainapp\templates\mainapp" />
+      <recent name="D:\Django and more\furnatureShop\mysite\basketapp\templates\basketapp" />
       <recent name="D:\Django and more\furnatureShop\mysite\authapp\templates\authapp" />
       <recent name="D:\Django and more\furnatureShop\mysite\media\products" />
       <recent name="D:\Django and more\furnatureShop\mysite" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Django and more\furnatureShop\mysite\static\mainapp\css" />
       <recent name="D:\Django and more\furnatureShop\mysite\static" />
       <recent name="D:\Django and more\furnatureShop\mysite" />
       <recent name="D:\Django and more\furnatureShop\mysite\mainapp\static\mainapp" />
@@ -48,5 +77,16 @@
       <updated>1650019625064</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

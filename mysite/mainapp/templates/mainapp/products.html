@@ -4,12 +4,7 @@
 {% block menu %}
 <div class="hero-white">
     <div class="header clearfix">
-        <a href="{% url 'mainapp:index' %}" class="logo"></a>
-        <ul class="menu">
-            {% include 'mainapp/includes/inc_main_menu.html' %}
-        </ul>
-        <a href="#" class="search"></a>
-        <a href="#" class="basket"></a>
+        {% include 'mainapp/includes/inc_main_menu.html' %}
     </div>
 </div>
 {% endblock %}
@@ -23,78 +18,51 @@
     <div class="details-products">
         <div class="details-slider">
             <div class="slider-product">
-                <img src="img/slider1.jpg">
+                <img src="/media/{{ hot_product.image }}">
             </div>
             <div class="slider-control">
                 <div class="block">
-                    <a href="#"><img src="img/controll.jpg" alt="">
-                        <div class="text"></div>
-                    </a>
+                    <a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
                 </div>
                 <div class="block">
-                    <a href="#"><img src="img/controll1.jpg" alt="">
-                        <div class="text"></div>
-                    </a>
+                    <a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
                 </div>
                 <div class="block">
-                    <a href="#"><img src="img/controll2.jpg" alt="">
-                        <div class="text"></div>
-                    </a>
+                    <a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
                 </div>
             </div>
         </div>
-
         <div class="description">
-            <h3 class="big-bold">Отличный стул</h3>
+            <h3 class="big-bold">{{ hot_product.name }}</h3>
             <h3 class="red">горячее предложение</h3>
-            <p class="price"> 2585.9 <span>руб</span></p>
-            <a href="#" class="red-button">
+            <p class="price">{{ hot_product.price }} <span>руб</span></p>
+            <a href="{% url 'basketapp:add' hot_product.pk %}" class="red-button">
                 заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </a>
             <div class="description-text">
-                <p>Расположитесь комфортно.</p>
-                <p>Отличное качество материалов
-                    позволит вам это.</p>
-                <p>Различные цвета</p>
-                <p>высочайший уровень
-                    эргономики и прочность.</p>
+                {{ hot_product.description }}
             </div>
         </div>
     </div>
 
+
     <div class="related">
         <div class="title clearfix">
             <h2>Похожие продукты</h2>
-            <a class="explore" href="#">показать все <img src="img/arrow.png" alt=""></a>
+            <a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
         </div>
         <div class="related-products clearfix">
+            {% for product in same_products %}
             <div class="block">
-                <a href="#"><img src="img/product-11.jpg" alt="">
+                <a href="{% url 'mainapp:product' product.pk %}">{% if product.image %} <img  src="{{ product.image.url }}" alt=""> {% endif %}
                     <div class="text">
-                        <img src="img/icon-hover.png" alt="img">
-                        <h4>Стул повышенного качества</h4>
-                        <p>Не оторваться. </p>
+                        <img src="{% static 'img/icon-hover.png' %}" alt="img">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.category.name }}</p>
                     </div>
                 </a>
             </div>
-            <div class="block">
-                <a href="#"><img src="img/product-21.jpg" alt="">
-                    <div class="text">
-                        <img src="img/icon-hover.png" alt="img">
-                        <h4>Стул повышенного качества</h4>
-                        <p>Не оторваться. </p>
-                    </div>
-                </a>
-            </div>
-            <div class="block">
-                <a href="#"><img src="img/product-31.jpg" alt="">
-                    <div class="text">
-                        <img src="img/icon-hover.png" alt="img">
-                        <h4>Стул повышенного качества</h4>
-                        <p>Не оторваться. </p>
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
 
         </div>
     </div>

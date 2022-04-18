@@ -23,6 +23,7 @@ urlpatterns = [
 
     path('', include('mainapp.urls')),
     path('', include('authapp.urls')),
+    path('basket/', include('basketapp.urls')),
 ]
 
 if settings.DEBUG:
