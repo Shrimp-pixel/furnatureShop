@@ -1,0 +1,22 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+{% block head %}
+                {{ title }}
+{% endblock %}
+{% block head %}
+    Редактирование
+{% endblock %}
+{% block content %}
+{% if user.avatar %}
+    <img src = "{{ user.avatar.url }}">
+{% endif %}
+    <form class="form-horizontal " action="{% url 'authapp:edit' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ edit_form.as_p }}
+        {{ edit_profile_form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Сохранить">
+    </form>
+    <hr>
+    <a href="{% url 'mainapp:index' %}">На главную</a>
+
+{% endblock %}
