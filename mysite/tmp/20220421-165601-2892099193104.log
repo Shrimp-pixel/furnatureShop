@@ -1,0 +1,11 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Account activation
+From: django@gb.local
+To: aqwerttyhu@gmail.com
+Date: Thu, 21 Apr 2022 13:56:01 -0000
+Message-ID: <165054936146.3876.15284037063732093795@DESKTOP-DLNVR8M>
+
+Your activation url: http://localhost:8000/verify/aqwerttyhu@gmail.com/2c9c6a25029f886da04a364d97ee25440e7c3d03
+-------------------------------------------------------------------------------

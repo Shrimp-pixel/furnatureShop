@@ -5,6 +5,7 @@ from django.db import models
 class ProductCategory(models.Model):
     name = models.CharField(max_length=255, unique=True, verbose_name='название')
     description = models.TextField(verbose_name='описание')
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -23,6 +24,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='описание')
     price = models.DecimalField(decimal_places=2, max_digits=10, default=0, verbose_name='цена')
     quantity = models.PositiveSmallIntegerField(default=0, verbose_name='количество')
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.name} ({self.category.name})'
@@ -30,3 +32,10 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
+
+    def delete(self, *args, **kwargs):
+        if self.is_active:
+            self.is_active = False
+        else:
+            self.is_active = True
+        self.save()

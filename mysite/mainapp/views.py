@@ -1,14 +1,11 @@
 import random
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
+
 from .models import Product, ProductCategory
 from basketapp.models import Basket
-
-
-def get_basket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    return None
 
 
 def get_hot_product():
@@ -23,7 +20,6 @@ def get_same_product(hot_product):
 def index(request):
     context = {
         'products': Product.objects.all()[:4],
-        'basket': get_basket(request.user),
     }
     return render(request, 'mainapp/index.html', context=context)
 
@@ -32,26 +28,36 @@ def contact(request):
     return render(request, 'mainapp/contact.html')
 
 
-def products(request, pk=None):
-    links_menu = ProductCategory.objects.all()
-    if pk is not None:
-        if pk == 0:
-            product_list = Product.objects.all()
-            category_item = {
+class ProductsListView(ListView):
+    model = Product
+    template_name = 'mainapp/products_list.html'
+    paginate_by = 2
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        category_pk = self.kwargs.get('pk')
+        if category_pk != 0:
+            queryset = queryset.filter(category__pk=category_pk)
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        category_pk = self.kwargs.get('pk')
+        context_data['links_menu'] = ProductCategory.objects.all()
+        context_data['title'] = 'Продукты'
+        if category_pk == 0:
+            context_data['category'] = {
                 'name': 'все',
                 'pk': 0,
             }
         else:
-            category_item = get_object_or_404(ProductCategory, pk=pk)
-            product_list = Product.objects.filter(category__pk=pk)
-        context = {
-            'links_menu': links_menu,
-            'title': 'Продукты',
-            'product_list': product_list,
-            'category_item': category_item,
-            'basket': get_basket(request.user),
-        }
-        return render(request=request, template_name='mainapp/products_list.html', context=context)
+            context_data['category'] = get_object_or_404(ProductCategory, pk=category_pk)
+        return context_data
+
+
+def products(request):
+    links_menu = ProductCategory.objects.all()
 
     hot_product = get_hot_product()
     same_products = get_same_product(hot_product)
@@ -60,7 +66,6 @@ def products(request, pk=None):
         'links_menu': links_menu,
         'hot_product': hot_product,
         'same_products': same_products,
-        'basket': get_basket(request.user),
     }
     return render(request=request, template_name='mainapp/products.html', context=context)
 
@@ -69,7 +74,6 @@ def product(request, pk):
     links_menu = ProductCategory.objects.all()
     context = {
         'product': get_object_or_404(Product, pk=pk),
-        'basket': get_basket(request.user),
         'links_menu': links_menu,
     }
     return render(request, 'mainapp/product.html', context)

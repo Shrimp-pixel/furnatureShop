@@ -20,10 +20,13 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
 
     path('', include('mainapp.urls')),
     path('', include('authapp.urls')),
     path('basket/', include('basketapp.urls')),
+    path('control/', include('adminapp.urls')),
+
 ]
 
 if settings.DEBUG:
