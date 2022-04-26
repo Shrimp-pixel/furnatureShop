@@ -15,6 +15,15 @@ from django.views.generic import ListView, CreateView, UpdateView, DetailView, D
 from mainapp.models import ProductCategory, Product
 
 
+@receiver(pre_save, sender=ProductCategory)
+def product_is_active_update_productcategory_save(sender, instance, **kwargs):
+    if instance.pk:
+        if instance.is_active:
+            instance.product_set.update(is_active=True)
+        else:
+            instance.product_set.update(is_active=False)
+
+
 class AccessMixin:
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
@@ -101,10 +110,27 @@ def categories(request):
     return render(request, 'adminapp/categories.html', context)
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def category_update(request):
-    return None
+#@user_passes_test(lambda u: u.is_superuser)
+#def category_update(request):
+#    return None
 
+class ProductCategoryUpdateView(UpdateView):
+    model = ProductCategory
+    form_class = ProductCategoryEditForm
+    template_name = 'adminapp/product_form.html'
+    success_url = reverse_lazy('adminapp:category_list')
+
+#   def get_success_url(self):
+#       return reverse('adminapp:category_update', args=[self.kwargs.get('pk')])
+
+    def form_valid(self, form):
+        if 'discount' in form.cleaned_data:
+            discount = form.cleaned_data.get('discount')
+            if discount:
+                self.object.product_set.update(
+                    price=F('price') * (1 - discount / 100.0)
+                )
+        return super().form_valid(form)
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_delete(request):

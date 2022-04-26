@@ -12,7 +12,7 @@ from mainapp.models import Product
 # Create your views here.
 @login_required
 def basket(request):
-    basket_items = Basket.objects.filter(user=request.user)
+    basket_items = Basket.objects.filter(user=request.user).select_related()
 
     context = {
         'basket_items': basket_items,

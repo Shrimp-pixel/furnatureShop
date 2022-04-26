@@ -1,22 +1,13 @@
 from django import forms
 
-from authapp.forms import ShopUserEditForm
-from authapp.models import ShopUser
-from mainapp.models import ProductCategory, Product
+from mainapp.models import Product
+from .models import Order, OrderItem
 
 
-class ShopUserAdminEditForm(ShopUserEditForm):
+class OrderForm(forms.ModelForm):
     class Meta:
-        model = ShopUser
-        fields = '__all__'
-
-
-class ProductCategoryEditForm(forms.ModelForm):
-    discount = forms.IntegerField(label='скидка', min_value=0, max_value=90, initial=0, required=False)
-
-    class Meta:
-        model = ProductCategory
-        fields = '__all__'
+        model = Order
+        exclude = ['user',]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -28,10 +19,12 @@ class ProductCategoryEditForm(forms.ModelForm):
             field.help_text = ''
 
 
-class ProductCreateForm(forms.ModelForm):
+class OrderItemForm(forms.ModelForm):
+    price = forms.CharField(label='Цена (руб/шт)', required=False)
+
     class Meta:
-        model = Product
-        exclude = ['is_active', ]
+        model = OrderItem
+        exclude = ()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -42,7 +35,4 @@ class ProductCreateForm(forms.ModelForm):
                 field.widget.attrs['class'] = 'form-control'
             field.help_text = ''
 
-
-class ProductEditForm(ProductCreateForm):
-    class Meta(ProductCreateForm.Meta):
-        exclude = ['', ]
+        self.fields['product'].queryset = Product.objects.filter(is_active=True).select_related()

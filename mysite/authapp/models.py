@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 # Create your models here.
 class ShopUser(AbstractUser):
-    avatar = models.ImageField(upload_to='users_avatars', blank=True, verbose_name='аватар')
+    avatar = models.ImageField(upload_to='users_avatars', blank=True, verbose_name='аватар', default='default.jpg')
     age = models.PositiveSmallIntegerField(verbose_name='возраст', null=True, default=18)
 
     activate_key = models.CharField(max_length=128, verbose_name='Ключ активации', blank=True, null=True)

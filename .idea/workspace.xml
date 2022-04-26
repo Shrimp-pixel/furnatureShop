@@ -1,70 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40eaa6ed-cb4c-463a-8b0b-95795fbfba0f" name="Changes" comment="Basket: ajax">
+    <list default="true" id="40eaa6ed-cb4c-463a-8b0b-95795fbfba0f" name="Changes" comment="Orderapp, tests, optimization">
       <change afterPath="$PROJECT_DIR$/mysite/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/.env.sample" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/categories.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/category_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/category_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/includes/inc_menu.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/product_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/product_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/product_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/products.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/user_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/user_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templates/adminapp/users.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/templatetags/my_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/adminapp/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/authapp/migrations/0002_shopuser_activate_key_shopuser_activate_key_expired.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/authapp/migrations/0003_shopuserprofile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/authapp/pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/authapp/services.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/authapp/signals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/mainapp/context_processors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/mainapp/management/commands/update.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/media/users_avatars/default.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/orderapp/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/orderapp/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/orderapp/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/orderapp/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/orderapp/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/orderapp/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/orderapp/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/newstatic/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/tmp/20220421-165601-2892099193104.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/templates/authapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/templates/authapp/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/templates/authapp/register_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/templates/authapp/register_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/authapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/authapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_main_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/includes/inc_main_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/templates/mainapp/products_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mainapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mainapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/mainapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/mainapp/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,15 +35,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/authapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Django and more\furnatureShop\mysite\authapp" />
       <recent name="D:\Django and more\furnatureShop\mysite\mainapp" />
-      <recent name="D:\Django and more\furnatureShop\mysite" />
-      <recent name="D:\Django and more\furnatureShop\mysite\media\users_avatars" />
+      <recent name="D:\Django and more\furnatureShop\mysite\mainapp\management\commands" />
       <recent name="D:\Django and more\furnatureShop\mysite\static\mainapp\js" />
+      <recent name="D:\Django and more\furnatureShop\mysite\authapp" />
+      <recent name="D:\Django and more\furnatureShop\mysite" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Django and more\furnatureShop\mysite" />
@@ -136,7 +75,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650300346356</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Admin: New admin">
+      <created>1650550934320</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650550934320</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Orderapp, tests, optimization">
+      <created>1650993969005</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650993969006</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +108,18 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Basket: add and delete" />
     <MESSAGE value="Basket: ajax" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basket: ajax" />
+    <MESSAGE value="Admin: New admin" />
+    <MESSAGE value="Orderapp, tests, optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Orderapp, tests, optimization" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mysite/mainapp/tests_products.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

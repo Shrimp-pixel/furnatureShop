@@ -1,25 +1,54 @@
 import random
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
-
+from django.conf import settings
+from django.core.cache import cache
 from .models import Product, ProductCategory
-from basketapp.models import Basket
+from django.views.decorators.cache import cache_page
+
+
+def get_links_menu():
+    if settings.LOW_CACHE:
+        key = 'categories'
+        links_menu = cache.get(key)
+        if links_menu is None:
+            links_menu = ProductCategory.objects.filter(is_active=True)
+            cache.set(key, links_menu)
+
+    return ProductCategory.objects.filter(is_active=True)
+
+
+def get_category(pk):
+    if settings.LOW_CACHE:
+        key = f'category_{pk}'
+        category_item = cache.get(key)
+        if category_item is None:
+            category_item = get_object_or_404(ProductCategory, pk=pk)
+            cache.set(key, category_item)
+        return category_item
+    return get_object_or_404(ProductCategory, pk=pk)
 
 
 def get_hot_product():
-    return random.sample(list(Product.objects.all()), 1)[0]
+    try:
+        return random.sample(list(Product.objects.all()), 1)[0]
+    except:
+        return None
 
 
 def get_same_product(hot_product):
-    return Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
+    return Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk).select_related()[:3]
 
 
 # Create your views here.
 def index(request):
+    is_home = Q(category__name='дом')
+    is_office = Q(category__name='офис')
     context = {
-        'products': Product.objects.all()[:4],
+        'title': 'Главная',
+        'products': Product.objects.filter(is_home | is_office),
     }
     return render(request, 'mainapp/index.html', context=context)
 
@@ -34,6 +63,9 @@ class ProductsListView(ListView):
     paginate_by = 2
     context_object_name = 'products'
 
+    def _get_links_menu(self):
+        return get_links_menu()
+
     def get_queryset(self):
         queryset = super().get_queryset()
         category_pk = self.kwargs.get('pk')
@@ -44,7 +76,7 @@ class ProductsListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
         category_pk = self.kwargs.get('pk')
-        context_data['links_menu'] = ProductCategory.objects.all()
+        context_data['links_menu'] = self._get_links_menu()
         context_data['title'] = 'Продукты'
         if category_pk == 0:
             context_data['category'] = {
@@ -52,12 +84,13 @@ class ProductsListView(ListView):
                 'pk': 0,
             }
         else:
-            context_data['category'] = get_object_or_404(ProductCategory, pk=category_pk)
+            context_data['category'] = get_category(category_pk)
         return context_data
 
 
+#@cache_page(3600)
 def products(request):
-    links_menu = ProductCategory.objects.all()
+    links_menu = get_links_menu()
 
     hot_product = get_hot_product()
     same_products = get_same_product(hot_product)
@@ -71,7 +104,7 @@ def products(request):
 
 
 def product(request, pk):
-    links_menu = ProductCategory.objects.all()
+    links_menu = get_links_menu()
     context = {
         'product': get_object_or_404(Product, pk=pk),
         'links_menu': links_menu,

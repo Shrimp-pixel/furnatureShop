@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-3xa5@&8%t$w3ljxspt65l49tb^gh+_$co#eiti--j+bm-vfr-@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -42,11 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    'debug_toolbar',
+    'social_django',
+    'template_profiler_panel',
 
     'mainapp.apps.MainappConfig',
     'authapp.apps.AuthappConfig',
@@ -56,9 +54,8 @@ INSTALLED_APPS = [
 
 ]
 
-SITE_ID = 1
-
 MIDDLEWARE = [
+#    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -66,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+#    'django.middleware.cache.FetchCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -96,12 +95,21 @@ AUTH_USER_MODEL = 'authapp.ShopUser'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'geekshop',
+#         'USER': 'postgres',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -137,9 +145,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
+ENV_TYPE = os.getenv('ENV_TYPE')
+if ENV_TYPE == 'local':
+    STATICFILES_DIRS = (
+        BASE_DIR / 'static',
+    )
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
+
+LOGIN_REDIRECT_URL = 'mainapp:index'
+
+LOGIN_URL = 'authapp:login'
+LOGIN_ERROR_URL = 'mainapp:index'
 
 MEDIA_URL = '/media/'
 
@@ -149,11 +166,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-LOGIN_REDIRECT_URL = 'mainapp:index'
-
-LOGIN_URL = 'authapp:login'
-LOGIN_ERROR_URL = 'mainapp:index'
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
@@ -174,26 +186,43 @@ else:
 
 BASE_URL = 'http://localhost:8000'
 
-AUTHENTICATION_BACKENDS = (
-
-    'django.contrib.auth.backends.ModelBackend',
-
+AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
-)
-
-#SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
-#SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
+if DEBUG:
+    def show_toolbar(request):
+        return True
 
-#API_VERSION = 5.131
 
-#SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
-#SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+    }
+    DEBUG_TOOLBAR_PANELS = [
+        'debug_toolbar.panels.versions.VersionsPanel',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.settings.SettingsPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.templates.TemplatesPanel',
+        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.signals.SignalsPanel',
+        'debug_toolbar.panels.logging.LoggingPanel',
+        'debug_toolbar.panels.redirects.RedirectsPanel',
+        'debug_toolbar.panels.profiling.ProfilingPanel',
+        'template_profiler_panel.panels.template.TemplateProfilerPanel',
+    ]
+
+# SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+# SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 #
-#SOCIAL_AUTH_PIPELINE = (
+# SOCIAL_AUTH_PIPELINE = (
 #    'social_core.pipeline.social_auth.social_details',
 #    'social_core.pipeline.social_auth.social_uid',
 #    'social_core.pipeline.social_auth.auth_allowed',
@@ -203,17 +232,18 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 #    'social_core.pipeline.social_auth.associate_user',
 #    'social_core.pipeline.social_auth.load_extra_data',
 #    'social_core.pipeline.user.user_details',
-#)
+# )
+LOW_CACHE = False
+if ENV_TYPE != 'local':
+    CACHE_MIDDLEWARE_ALIAS = 'default'
+    CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'
+    CACHE_MIDDLEWARE_SECONDS = 120
 
-CACHE_MIDDLEWARE_ALIAS = 'default'
-CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'
-CACHE_MIDDLEWARE_SECONDS = 120
-
-CASHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211'
+    CASHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': '127.0.0.1:11211'
+        }
     }
-}
 
-LOW_CACHE = True
+    LOW_CACHE = True

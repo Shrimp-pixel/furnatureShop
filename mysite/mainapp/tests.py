@@ -1,3 +1,40 @@
 from django.test import TestCase
+from django.test.client import Client
+from django.urls import reverse
 
-# Create your tests here.
+from .models import Product, ProductCategory
+
+
+class TestMainappSmoke(TestCase):
+    status_ok = 200
+    status_redirect = 302
+
+    def setUp(self) -> None:
+        self.category = ProductCategory.objects.create(
+            name='cat1'
+        )
+        for i in range(10):
+            Product.objects.create(
+                name=f'prod-{i}',
+                category=self.category,
+                short_desc='shortdesc',
+                description='desc'
+            )
+        self.client = Client()
+
+    def test_mainapp_urls(self):
+        response = self.client.get(reverse('mainapp:index'))
+        self.assertEqual(response.status_code, self.status_ok)
+
+        response = self.client.get(reverse('mainapp:contact'))
+        self.assertEqual(response.status_code, self.status_ok)
+
+    def test_products_urls(self):
+        for product in Product.objects.all():
+            response = self.client.get(reverse('mainapp:product', kwargs={'pk': product.pk}))
+            self.assertEqual(response.status_code, self.status_ok)
+
+    def test_categories_urls(self):
+        for category in ProductCategory.objects.all():
+            response = self.client.get(reverse('mainapp:category', kwargs={'pk': category.pk}))
+            self.assertEqual(response.status_code, self.status_ok)

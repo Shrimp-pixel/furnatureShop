@@ -14,7 +14,8 @@
         <hr>
         <a class="btn btn-link" href="{% url 'authapp:register' %}">Зарегистрироваться</a>
         <a class="btn btn-link" href="{% url 'mainapp:index' %}">На главную</a>
-        <!--<a class="btn btn-link" href="{% url 'social:begin' 'vk-oauth2' %}?next=/">Вход через VK</a>-->
-         <a class="btn btn-link" href="{% url 'social:begin' 'google-oauth2' %}?next=/">Вход через Google</a><br>
+        <a class="btn btn-link" href="{% url 'social:begin' 'google-oauth2' %}">Google</a>
+
+
     </div>
 {% endblock %}
